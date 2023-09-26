@@ -1,4 +1,4 @@
-HELP.md
+desafio-01/cielo-backend-challenge/HELP.md
 target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
