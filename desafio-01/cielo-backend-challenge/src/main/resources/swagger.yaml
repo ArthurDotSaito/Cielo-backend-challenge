@@ -1,0 +1,28 @@
+openapi: 3.0.0
+servers:
+  # Added by API Auto Mocking Plugin
+  - description: SwaggerHub API Auto Mocking
+    url: https://virtserver.swaggerhub.com/ARTHURSAITO/cielo-backend-challenge/1.0.0
+info:
+  version: "1.0.0"
+  title: cielo-backend-challenge
+  description: The API for backend-challenge in Cielo Bootcamp
+paths:
+  /clients:
+    post:
+      tags:
+        - Clients
+      summary: Create a client
+      description: returns information about a specific client
+      operationId: createClients
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ClientRequest"
+      responses:
+        '201':
+          description: Client created successfully
+        '409'
+        description: Client already exists
