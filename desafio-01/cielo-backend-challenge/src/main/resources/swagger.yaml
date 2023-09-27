@@ -24,5 +24,43 @@ paths:
       responses:
         '201':
           description: Client created successfully
-        '409'
-        description: Client already exists
+        '409':
+          description: Client already exists
+
+
+components:
+  schemas:
+    ClientRequest:
+      oneOf:  # Usamos oneOf para especificar que o objeto deve atender a pelo menos uma das condições
+        - $ref: "#/components/schemas/ClientLegalRequest"
+        - $ref: "#/components/schemas/ClientFisicalRequest"
+
+    ClientLegalRequest:
+      type: object
+      properties:
+        category:
+          type: string
+          enum:
+            - legal_client
+          required:
+            - category
+            - cnpj
+            - razao_social
+            - mcc
+            - cpf
+            - name
+            - email
+
+    ClientFisicalRequest:
+      type: object
+      properties:
+        category:
+          type: string
+          enum:
+            - fisical_client
+          required:
+            - category
+            - cpf
+            - mcc
+            - name
+            - email
