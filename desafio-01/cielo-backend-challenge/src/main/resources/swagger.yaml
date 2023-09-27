@@ -31,7 +31,7 @@ paths:
 components:
   schemas:
     ClientRequest:
-      oneOf:  # Usamos oneOf para especificar que o objeto deve atender a pelo menos uma das condições
+      oneOf:
         - $ref: "#/components/schemas/ClientLegalRequest"
         - $ref: "#/components/schemas/ClientFisicalRequest"
 
