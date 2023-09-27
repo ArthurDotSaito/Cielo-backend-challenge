@@ -47,10 +47,50 @@ paths:
         '400':
           description: Bad request Syntax error
 
+    put:
+      summary: update information about a specific client
+      parameters:
+        - in: path
+          name: uuid
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ClientRequest"
+      responses:
+        '200':
+          description: Client data successfully updated
+        '404':
+          description: Client not found
+        '400':
+          description: Bad request Syntax error
+
+    delete:
+      summary: delete information about a specific client
+      parameters:
+        - in: path
+          name: uuid
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '204':
+          description: Client data successfully deleted
+        '404':
+          description: Client not found
+        '400':
+          description: Bad request Syntax error
+
 components:
   schemas:
     ClientRequest:
-      oneOf:  # Usamos oneOf para especificar que o objeto deve atender a pelo menos uma das condições
+      oneOf:
         - $ref: "#/components/schemas/ClientLegalRequest"
         - $ref: "#/components/schemas/ClientFisicalRequest"
 
@@ -88,7 +128,6 @@ components:
             - cpf
             - name
             - email
-
 
     ClientFisicalRequest:
       type: object
