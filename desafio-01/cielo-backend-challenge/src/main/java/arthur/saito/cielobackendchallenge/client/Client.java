@@ -1,7 +1,6 @@
 package arthur.saito.cielobackendchallenge.client;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.*;
@@ -15,7 +14,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @ToString
 @Inheritance(strategy = InheritanceType.JOINED)
-public class Client {
+public sealed abstract  class Client permits  ClientFisical, ClientLegal{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -24,6 +23,8 @@ public class Client {
     private UUID uuid;
     @Size(max = 50)
     private String name;
+    @Size(max = 4)
+    private String mcc;
     @Pattern(regexp = "^[a-zA-Z0-9_\\-\\.]+@[a-zA-Z0-9_\\-\\.]+\\.[a-zA-Z]{2,5}$")
     private String email;
 }
