@@ -13,7 +13,7 @@ paths:
       tags:
         - Clients
       summary: Create a client
-      description: returns information about a specific client
+      description: create a client
       operationId: createClients
       requestBody:
         required: true
@@ -26,6 +26,8 @@ paths:
           description: Client created successfully
         '409':
           description: Client already exists
+        '400':
+          description: Bad request Syntax error
 
   /clients/{uuid}:
     get:
@@ -42,11 +44,13 @@ paths:
           description: Client data successfully return
         '404':
           description: Client not found
+        '400':
+          description: Bad request Syntax error
 
 components:
   schemas:
     ClientRequest:
-      oneOf:
+      oneOf:  # Usamos oneOf para especificar que o objeto deve atender a pelo menos uma das condições
         - $ref: "#/components/schemas/ClientLegalRequest"
         - $ref: "#/components/schemas/ClientFisicalRequest"
 
@@ -57,6 +61,25 @@ components:
           type: string
           enum:
             - legal_client
+        cnpj:
+          type: string
+          pattern: '^[0-9]{14}$'
+        razao_social:
+          type: string
+          maxLength: 50
+        mcc:
+          type: string
+          maxLength: 4
+        cpf:
+          type: string
+          pattern: '^[0-9]{11}$'
+        name:
+          type: string
+          maxLength: 50
+        email:
+          type: string
+          pattern: '^([a-zA-Z0-9_\\-\\.]+)@([a-zA-Z0-9_\\-\\.]+)\\.([a-zA-Z]{2,5})$'
+
           required:
             - category
             - cnpj
@@ -66,6 +89,7 @@ components:
             - name
             - email
 
+
     ClientFisicalRequest:
       type: object
       properties:
@@ -73,6 +97,19 @@ components:
           type: string
           enum:
             - fisical_client
+        mcc:
+          type: string
+          maxLength: 4
+        cpf:
+          type: string
+          pattern: '^[0-9]{11}$'
+        name:
+          type: string
+          maxLength: 50
+        email:
+          type: string
+          pattern: '^([a-zA-Z0-9_\\-\\.]+)@([a-zA-Z0-9_\\-\\.]+)\\.([a-zA-Z]{2,5})$'
+
           required:
             - category
             - cpf
