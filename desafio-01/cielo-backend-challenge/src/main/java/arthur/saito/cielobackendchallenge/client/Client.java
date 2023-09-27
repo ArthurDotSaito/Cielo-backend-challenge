@@ -11,8 +11,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-@Inheritance
-
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
