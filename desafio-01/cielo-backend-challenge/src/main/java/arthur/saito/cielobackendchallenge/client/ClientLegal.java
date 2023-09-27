@@ -14,14 +14,12 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class ClientLegal extends Client{
+public final class ClientLegal extends Client{
     @Size(max = 14)
     @Pattern(regexp = "^[0-9]{14}$")
     private String cnpj;
     @Size(max = 14)
     private String razaoSocial;
-    @Size(max = 4)
-    private String mcc;
     @Size(max = 11)
     @Pattern(regexp = "^[0-9]{11}$")
     private String cpf;
