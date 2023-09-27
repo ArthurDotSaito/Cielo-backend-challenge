@@ -27,6 +27,21 @@ paths:
         '409':
           description: Client already exists
 
+  /clients/{uuid}:
+    get:
+      summary: returns information about a specific client
+      parameters:
+        - in: path
+          name: uuid
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Client data successfully return
+        '404':
+          description: Client not found
 
 components:
   schemas:
