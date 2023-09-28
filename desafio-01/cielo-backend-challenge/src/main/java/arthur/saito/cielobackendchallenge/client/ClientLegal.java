@@ -11,7 +11,6 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
 
 public final class ClientLegal extends Client{
@@ -23,4 +22,7 @@ public final class ClientLegal extends Client{
     @Size(max = 11)
     @Pattern(regexp = "^[0-9]{11}$")
     private String cpf;
+    public ClientLegal(){
+        setCategory(ClientCategory.LEGAL_CLIENT);
+    }
 }

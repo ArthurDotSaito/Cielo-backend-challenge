@@ -7,8 +7,10 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
 public final class ClientFisical extends Client{
     private String cpf;
+    public ClientFisical(){
+        setCategory(ClientCategory.FISICAL_CLIENT);
+    }
 }

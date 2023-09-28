@@ -27,4 +27,6 @@ public sealed abstract  class Client permits  ClientFisical, ClientLegal{
     private String mcc;
     @Pattern(regexp = "^[a-zA-Z0-9_\\-\\.]+@[a-zA-Z0-9_\\-\\.]+\\.[a-zA-Z]{2,5}$")
     private String email;
+    @Enumerated(EnumType.STRING)
+    private ClientCategory category;
 }
