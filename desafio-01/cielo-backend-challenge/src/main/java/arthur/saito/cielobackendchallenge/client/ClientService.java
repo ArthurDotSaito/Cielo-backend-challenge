@@ -3,7 +3,9 @@ package arthur.saito.cielobackendchallenge.client;
 import arthur.saito.cielobackendchallenge.client.fisicalClient.ClientFisicalRequestDTO;
 import arthur.saito.cielobackendchallenge.client.legalClient.ClientLegalRequestDTO;
 import org.modelmapper.ModelMapper;
+import org.springframework.stereotype.Service;
 
+@Service
 public class ClientService {
     private final ClientRepository clientRepository;
     private final ModelMapper modelMapper;
