@@ -5,6 +5,7 @@ import java.util.UUID;
 public class ClientLegalRequestDTO {
     private UUID uuid;
     private String cnpj;
+    private String razaoSocial;
     private String mcc;
     private String cpf;
     private String name;
