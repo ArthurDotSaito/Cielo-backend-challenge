@@ -1,7 +1,14 @@
 package arthur.saito.cielobackendchallenge.client.legalClient;
 
+import lombok.*;
+
 import java.util.UUID;
 
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
 public class ClientLegalRequestDTO {
     private UUID uuid;
     private String cnpj;
