@@ -6,6 +6,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+
 @Service
 public class ClientService {
     private final ClientRepository clientRepository;
@@ -24,6 +25,6 @@ public class ClientService {
     }
 
     public ResponseEntity<?> createClient(){
-
+        return this.clientRepository.
     }
 }
