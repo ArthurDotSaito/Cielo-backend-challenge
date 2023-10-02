@@ -3,6 +3,7 @@ package arthur.saito.cielobackendchallenge.client;
 import arthur.saito.cielobackendchallenge.client.fisicalClient.ClientFisicalRequestDTO;
 import arthur.saito.cielobackendchallenge.client.legalClient.ClientLegalRequestDTO;
 import org.modelmapper.ModelMapper;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -24,7 +25,12 @@ public class ClientService {
         return this.modelMapper.map(client, ClientLegalRequestDTO.class);
     }
 
-    public ResponseEntity<?> createClient(){
-        return this.clientRepository.
+    public ResponseEntity<?> createLegalClient(ClientLegalRequestDTO clientLegalRequestDto){
+        if(clientRepository.existsByUuid(clientLegalRequestDto.getUuid())){
+            return ResponseEntity.status(HttpStatus.CONFLICT).build();
+        }
+
+
+        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 }
